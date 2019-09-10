@@ -4,133 +4,107 @@ int main()
 {
 	// Initialization
 	//--------------------------------------------------------------------------------------
-	const int screenWidth = 800;
-	const int screenHeight = 450;
+	const int screenWidth=800;
+	const int screenHeight=450;
 
-	InitWindow(screenWidth, screenHeight, "raylib [core] example - keyboard input");
+	InitWindow(screenWidth,screenHeight,"raylib [core] example - keyboard input");
 
-	Vector2 ballMenuPosition = { -100.0f,-100.0f };
-	Color ballMenuColor = DARKBLUE;
-	Vector2 ballPosition = { (float)screenWidth / 2,(float)screenHeight / 2 };
+	Vector2 ballMenuPosition={-100.0f,-100.0f};
+	Color ballMenuColor=DARKBLUE;
+	Vector2 ballPosition={(float)screenWidth/2,(float)screenHeight/2};
 	Rectangle rectMenu;
-	rectMenu.width = 100;
-	rectMenu.height = 50;
-	rectMenu.x = 350;
-	rectMenu.y = 350;
+	rectMenu.width=100;
+	rectMenu.height=50;
+	rectMenu.x=350;
+	rectMenu.y=350;
 	Rectangle rectMenu2;
-	rectMenu2.width = 200;
-	rectMenu2.height = 50;
-	rectMenu2.x = 300;
-	rectMenu2.y = 250;
+	rectMenu2.width=200;
+	rectMenu2.height=50;
+	rectMenu2.x=300;
+	rectMenu2.y=250;
 	Rectangle rectMenu3;
-	rectMenu3.width = 200;
-	rectMenu3.height = 50;
-	rectMenu3.x = 300;
-	rectMenu3.y = 350;
+	rectMenu3.width=200;
+	rectMenu3.height=50;
+	rectMenu3.x=300;
+	rectMenu3.y=350;
 	Rectangle rectP1;
-	rectP1.width = 8;
-	rectP1.height = 75;
-	rectP1.x = (float)screenWidth / 20;
-	rectP1.y = (float)screenHeight / 2;
+	rectP1.width=8;
+	rectP1.height=75;
+	rectP1.x=(float)screenWidth/20;
+	rectP1.y=(float)screenHeight/2;
 	Rectangle rectP2;
-	rectP2.width = 8;
-	rectP2.height = 75;
-	rectP2.x = screenWidth - (float)screenWidth / 20;
-	rectP2.y = (float)screenHeight / 2;
-	Color rectP1Color = BLUE;
-	Color rectP2Color = MAROON;
-	Color ballColor = WHITE;
-	Vector2 ballSpeed = { 7.5f,6.0f };
-	int rectSpeed = 8;
-	int ballRadius = 10;
-	int puntosP1 = 0;
-	int puntosP2 = 0;
-	int colorCounterP1 = 0;
-	int colorCounterP2 = 4;
-	bool rect1Collision = false;
-	bool rect2Collision = false;
-	bool rect1PrevColor = false;
-	bool rect1NextColor = false;
-	bool rect2PrevColor = false;
-	bool rect2NextColor = false;
-	bool hasCollided = false;
-	bool gameMenuOn = true;
-	bool GameOver = false;
-	Vector2 TriBase = { 5,5 };
-	Vector2 TriCat1 = { 5,5 };
-	Vector2 TriCat2 = { 5,5 };
+	rectP2.width=8;
+	rectP2.height=75;
+	rectP2.x=screenWidth-(float)screenWidth/20;
+	rectP2.y=(float)screenHeight/2;
+	Color rectP1Color=BLUE;
+	Color rectP2Color=MAROON;
+	Color ballColor=WHITE;
+	Vector2 ballSpeed={ 7.5f,6.0f };
+	int rectSpeed=8;
+	int ballRadius=10;
+	int puntosP1=0;
+	int puntosP2=0;
+	int colorCounterP1=0;
+	int colorCounterP2=4;
+	bool rect1Collision=false;
+	bool rect2Collision=false;
+	bool rect1PrevColor=false;
+	bool rect1NextColor=false;
+	bool rect2PrevColor=false;
+	bool rect2NextColor=false;
+	bool hasCollided=false;
+	bool gameMenuOn=true;
+	bool GameOver=false;
+	Vector2 TriBase={ 5,5 };
+	Vector2 TriCat1={ 5,5 };
+	Vector2 TriCat2={ 5,5 };
 
 	SetTargetFPS(60);// Set our game to run at 60 frames-per-second
 	//--------------------------------------------------------------------------------------
 	do {
-		while (gameMenuOn && !WindowShouldClose())
+		while (gameMenuOn&&!WindowShouldClose())
 		{
-			ballMenuPosition = GetMousePosition();
+			ballMenuPosition=GetMousePosition();
 
 			BeginDrawing();
 			ClearBackground(BLACK);
-			DrawText("Usa las flechas para cambiar el color de las barras!", 140, 30, 20, RAYWHITE);
-			DrawText("Presiona 'Play' cuando estes listo para jugar.", 170, 50, 20, RAYWHITE);
-			DrawText(TextFormat("P1: %i", puntosP1), (float)screenWidth / 20, 10, 20, RAYWHITE);
-			DrawText(TextFormat("P2: %i", puntosP2), screenWidth - (float)screenWidth / 10, 10, 20, RAYWHITE);
-			DrawCircleV(ballPosition, ballRadius - 5, MAROON);
-			DrawRectangleRec(rectP1, rectP1Color);
-			DrawRectangleRec(rectP2, rectP2Color);
-			DrawRectangleRec(rectMenu, RED);
-			DrawText("Play", rectMenu.x + 30, rectMenu.y + 15, 20, RAYWHITE);
-			DrawTriangle((Vector2) { (rectP1.x + (rectP1.width / 2)) - 10, (rectP1.y + (rectP1.height / 2) - 10) },
-				(Vector2) {(rectP1.x + (rectP1.width / 2)) - 20, (rectP1.y + (rectP1.height / 2))},
-				(Vector2) {(rectP1.x + (rectP1.width / 2)) - 10, (rectP1.y + (rectP1.height / 2) + 10)
-			}, VIOLET);
-			DrawTriangle((Vector2) { (rectP1.x + (rectP1.width / 2)) + 10, (rectP1.y + (rectP1.height / 2) - 10) },
-				(Vector2) {
-				(rectP1.x + (rectP1.width / 2)) + 10, (rectP1.y + (rectP1.height / 2) + 10)
-			},
-				(Vector2) {
-				(rectP1.x + (rectP1.width / 2)) + 20, (rectP1.y + (rectP1.height / 2))
-			}, VIOLET);
-			DrawTriangle((Vector2) { (rectP2.x + (rectP2.width / 2)) - 10, (rectP2.y + (rectP2.height / 2) - 10) },
-				(Vector2) {
-				(rectP2.x + (rectP2.width / 2)) - 20, (rectP2.y + (rectP2.height / 2))
-			},
-				(Vector2) {
-				(rectP2.x + (rectP2.width / 2)) - 10, (rectP2.y + (rectP2.height / 2) + 10)
-			}, VIOLET);
-			DrawTriangle((Vector2) { (rectP2.x + (rectP2.width / 2)) + 10, (rectP2.y + (rectP2.height / 2) - 10) },
-				(Vector2) {
-				(rectP2.x + (rectP2.width / 2)) + 10, (rectP2.y + (rectP2.height / 2) + 10)
-			},
-				(Vector2) {
-				(rectP2.x + (rectP2.width / 2)) + 20, (rectP2.y + (rectP2.height / 2))
-			}, VIOLET);
+			DrawText("Usa las flechas para cambiar el color de las barras!",140,30,20,RAYWHITE);
+			DrawText("Presiona 'Play' cuando estes listo para jugar.",170,50,20,RAYWHITE);
+			DrawText(TextFormat("P1: %i", puntosP1),(float)screenWidth/20,10,20,RAYWHITE);
+			DrawText(TextFormat("P2: %i", puntosP2),screenWidth-(float)screenWidth/10,10,20,RAYWHITE);
+			DrawCircleV(ballPosition,ballRadius-5,MAROON);
+			DrawRectangleRec(rectP1,rectP1Color);
+			DrawRectangleRec(rectP2,rectP2Color);
+			DrawRectangleRec(rectMenu,RED);
+			DrawText("Play",rectMenu.x+30,rectMenu.y+15,20,RAYWHITE);
+			DrawTriangle((Vector2){(rectP1.x+(rectP1.width/2))-10,(rectP1.y+(rectP1.height/2)-10)},
+						(Vector2){(rectP1.x+(rectP1.width/2))-20,(rectP1.y+(rectP1.height/2))},
+						(Vector2){(rectP1.x+(rectP1.width/2))-10,(rectP1.y+(rectP1.height/2)+10)},VIOLET);
+			DrawTriangle((Vector2){ (rectP1.x+(rectP1.width/2))+10,(rectP1.y+(rectP1.height/2)-10)},
+						(Vector2){(rectP1.x+(rectP1.width/2))+10,(rectP1.y+(rectP1.height/2)+10)},
+						(Vector2){(rectP1.x+(rectP1.width/2))+20,(rectP1.y+(rectP1.height/2))},VIOLET);
+			DrawTriangle((Vector2){(rectP2.x+(rectP2.width/2))-10,(rectP2.y+(rectP2.height/2)-10)},
+						(Vector2){(rectP2.x+(rectP2.width/2))-20,(rectP2.y+(rectP2.height/2))},
+						(Vector2){(rectP2.x+(rectP2.width/2))-10,(rectP2.y+(rectP2.height/2)+10)}, VIOLET);
+			DrawTriangle((Vector2){(rectP2.x+(rectP2.width/2))+10,(rectP2.y+(rectP2.height/2)-10)},
+						(Vector2){(rectP2.x +(rectP2.width/2))+10,(rectP2.y+(rectP2.height/2)+10)},
+						(Vector2){(rectP2.x +(rectP2.width/2))+20,(rectP2.y+(rectP2.height/2))},VIOLET);
 			EndDrawing();
 
-			bool menuCollision = CheckCollisionCircleRec(ballMenuPosition, ballRadius, rectMenu);
-			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && menuCollision) {
+			bool menuCollision=CheckCollisionCircleRec(ballMenuPosition,ballRadius,rectMenu);
+			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)&&menuCollision){
 				gameMenuOn = false;
 			}
 			rect1PrevColor = CheckCollisionPointTriangle(ballMenuPosition,
-				(Vector2) {
-				(rectP1.x + (rectP1.width / 2)) - 10, (rectP1.y + (rectP1.height / 2) - 10)
-			},
-				(Vector2) {
-				(rectP1.x + (rectP1.width / 2)) - 20, (rectP1.y + (rectP1.height / 2))
-			},
-					(Vector2) {
-					(rectP1.x + (rectP1.width / 2)) - 10, (rectP1.y + (rectP1.height / 2) + 10)
-				});
-
+				(Vector2){(rectP1.x+(rectP1.width/2))-10,(rectP1.y+(rectP1.height/2)-10)},
+				(Vector2){(rectP1.x+(rectP1.width/2))-20,(rectP1.y+(rectP1.height/2))},
+				(Vector2){(rectP1.x+(rectP1.width/2))-10,(rectP1.y+(rectP1.height/2)+10)});
 			rect1NextColor = CheckCollisionPointTriangle(ballMenuPosition,
-				(Vector2) {
-				(rectP1.x + (rectP1.width / 2)) + 10, (rectP1.y + (rectP1.height / 2) - 10)
-			},
-				(Vector2) {
-				(rectP1.x + (rectP1.width / 2)) + 10, (rectP1.y + (rectP1.height / 2) + 10)
-			},
-					(Vector2) {
-					(rectP1.x + (rectP1.width / 2)) + 20, (rectP1.y + (rectP1.height / 2))
+				(Vector2){(rectP1.x+(rectP1.width/2))+10,(rectP1.y+(rectP1.height/2)-10)},
+				(Vector2){(rectP1.x+(rectP1.width/2))+10,(rectP1.y+(rectP1.height/2)+10)},
+				(Vector2){(rectP1.x+(rectP1.width/2))+20,(rectP1.y+(rectP1.height/2))
 				});
-
 			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && rect1PrevColor) {
 				colorCounterP1--;
 				if (colorCounterP1 == colorCounterP2) { colorCounterP1--; }
@@ -140,9 +114,9 @@ int main()
 				if (colorCounterP1 == colorCounterP2) { colorCounterP1++; }
 			}
 			if (colorCounterP1 < 0) {
-				colorCounterP1 = 10;
+				colorCounterP1 = 8;
 			}
-			if (colorCounterP1 > 10)
+			if (colorCounterP1 > 8)
 			{
 				colorCounterP1 = 0;
 			}
@@ -158,51 +132,33 @@ int main()
 				rectP1Color = DARKBLUE;
 				break;
 			case 3:
-				rectP1Color = RED;
-				break;
-			case 4:
 				rectP1Color = MAROON;
 				break;
-			case 5:
-				rectP1Color = ORANGE;
-				break;
-			case 6:
+			case 4:
 				rectP1Color = YELLOW;
 				break;
-			case 7:
+			case 5:
 				rectP1Color = GREEN;
 				break;
-			case 8:
+			case 6:
 				rectP1Color = LIME;
 				break;
-			case 9:
+			case 7:
 				rectP1Color = BROWN;
 				break;
-			case 10:
+			case 8:
 				rectP1Color = DARKBROWN;
 				break;
 			}
 
 			rect2PrevColor = CheckCollisionPointTriangle(ballMenuPosition,
-				(Vector2) {
-				(rectP2.x + (rectP2.width / 2)) - 10, (rectP2.y + (rectP2.height / 2) - 10)
-			},
-				(Vector2) {
-				(rectP2.x + (rectP2.width / 2)) - 20, (rectP2.y + (rectP2.height / 2))
-			},
-					(Vector2) {
-					(rectP2.x + (rectP2.width / 2)) - 10, (rectP2.y + (rectP2.height / 2) + 10)
-				});
+				(Vector2){(rectP2.x + (rectP2.width / 2)) - 10, (rectP2.y + (rectP2.height / 2) - 10)},
+				(Vector2){(rectP2.x + (rectP2.width / 2)) - 20, (rectP2.y + (rectP2.height / 2))},
+				(Vector2){(rectP2.x + (rectP2.width / 2)) - 10, (rectP2.y + (rectP2.height / 2) + 10)});
 			rect2NextColor = CheckCollisionPointTriangle(ballMenuPosition,
-				(Vector2) {
-				(rectP2.x + (rectP2.width / 2)) + 10, (rectP2.y + (rectP2.height / 2) - 10)
-			},
-				(Vector2) {
-				(rectP2.x + (rectP2.width / 2)) + 10, (rectP2.y + (rectP2.height / 2) + 10)
-			},
-					(Vector2) {
-					(rectP2.x + (rectP2.width / 2)) + 20, (rectP2.y + (rectP2.height / 2))
-				});
+				(Vector2){(rectP2.x + (rectP2.width / 2)) + 10, (rectP2.y + (rectP2.height / 2) - 10)},
+				(Vector2){(rectP2.x + (rectP2.width / 2)) + 10, (rectP2.y + (rectP2.height / 2) + 10)},
+				(Vector2){(rectP2.x + (rectP2.width / 2)) + 20, (rectP2.y + (rectP2.height / 2))});
 
 			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && rect2PrevColor) {
 				colorCounterP2--;
@@ -210,7 +166,7 @@ int main()
 			}
 			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && rect2NextColor) {
 				colorCounterP2++;
-				if (colorCounterP1 == colorCounterP2) { colorCounterP1--; }
+				if (colorCounterP2 == colorCounterP1) { colorCounterP2++; }
 			}
 			if (colorCounterP2 < 0) {
 				colorCounterP2 = 10;
