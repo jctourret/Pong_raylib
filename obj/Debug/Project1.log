@@ -1,30 +1,30 @@
 ﻿  Source.cpp
-c:\users\administrador\downloads\project1\project1\source.cpp(74): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(75): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(76): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(80): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(111): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(298): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(299): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(303): warning C4552: "-": el resultado de la expresión no se usa
-c:\users\administrador\downloads\project1\project1\source.cpp(307): warning C4552: "-": el resultado de la expresión no se usa
-c:\users\administrador\downloads\project1\project1\source.cpp(311): warning C4552: "+": el resultado de la expresión no se usa
-c:\users\administrador\downloads\project1\project1\source.cpp(315): warning C4552: "+": el resultado de la expresión no se usa
-c:\users\administrador\downloads\project1\project1\source.cpp(323): warning C4552: "-": el resultado de la expresión no se usa
-c:\users\administrador\downloads\project1\project1\source.cpp(327): warning C4552: "-": el resultado de la expresión no se usa
-c:\users\administrador\downloads\project1\project1\source.cpp(331): warning C4552: "+": el resultado de la expresión no se usa
-c:\users\administrador\downloads\project1\project1\source.cpp(335): warning C4552: "+": el resultado de la expresión no se usa
-c:\users\administrador\downloads\project1\project1\source.cpp(355): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(356): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(357): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(358): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(370): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(371): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(386): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(391): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(395): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(396): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(397): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(399): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\administrador\downloads\project1\project1\source.cpp(13): warning C4101: 'ballMenuColor': variable local sin referencia
-  Project1.vcxproj -> C:\Users\Administrador\Downloads\Project1\bin\Debug\Project1.exe
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(74): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(75): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(76): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(80): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(108): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(295): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(296): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(300): warning C4552: "-": el resultado de la expresión no se usa
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(304): warning C4552: "-": el resultado de la expresión no se usa
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(308): warning C4552: "+": el resultado de la expresión no se usa
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(312): warning C4552: "+": el resultado de la expresión no se usa
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(320): warning C4552: "-": el resultado de la expresión no se usa
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(324): warning C4552: "-": el resultado de la expresión no se usa
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(328): warning C4552: "+": el resultado de la expresión no se usa
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(332): warning C4552: "+": el resultado de la expresión no se usa
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(352): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(353): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(354): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(355): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(367): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(368): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(383): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(388): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(392): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(393): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(394): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(396): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(13): warning C4101: 'ballMenuColor': variable local sin referencia
+  Project1.vcxproj -> C:\Users\Juan Cruz\Desktop\Pong_raylib\bin\Debug\Project1.exe
