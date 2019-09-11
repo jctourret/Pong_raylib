@@ -1,55 +1,50 @@
 #include "raylib.h"
 
+struct Player{
+	Vector2 Size;
+	Vector2 Position;
+	int Speed = 8;
+	bool win;
+	Color Color;
+	int Points;
+};
+
+Player player1;
+Player player2;
+
+struct MenuButton{
+	Vector2 Size;
+	Vector2 Position;
+};
+
+MenuButton playButton;
+MenuButton exitButton;
+
+struct Ball{
+	Vector2 Position;
+	Color Color = WHITE;
+	Vector2 Speed = { 7.5f,6.0f };
+	int Radius=10;
+};
+
+Ball playBall;
+Ball menuBall;
+
+struct Triangles
+{
+	Vector2 TriBase = { 5,5 };
+	Vector2 TriCat1 = { 5,5 };
+	Vector2 TriCat2 = { 5,5 };
+	Vector2 Position;
+};
+
 int main()
 {
 	// Initialization
 	//--------------------------------------------------------------------------------------
 	const int screenWidth=800;
 	const int screenHeight=450;
-
 	InitWindow(screenWidth,screenHeight,"raylib [core] example - keyboard input");
-
-	Vector2 ballMenuPosition={-100.0f,-100.0f};
-	Color ballMenuColor=DARKBLUE;
-	Vector2 ballPosition={(float)screenWidth/2,(float)screenHeight/2};
-	Rectangle rectMenu;
-	rectMenu.width=100;
-	rectMenu.height=50;
-	rectMenu.x=350;
-	rectMenu.y=250;
-	Rectangle rectMenu2;
-	rectMenu2.width=200;
-	rectMenu2.height=50;
-	rectMenu2.x=300;
-	rectMenu2.y=250;
-	Rectangle rectMenu3;
-	rectMenu3.width=200;
-	rectMenu3.height=50;
-	rectMenu3.x=300;
-	rectMenu3.y=350;
-	Rectangle rectMenu4;
-	rectMenu4.width = 100;
-	rectMenu4.height = 50;
-	rectMenu4.x = 350;
-	rectMenu4.y = 350;
-	Rectangle rectP1;
-	rectP1.width=8;
-	rectP1.height=75;
-	rectP1.x=(float)screenWidth/20;
-	rectP1.y=(float)screenHeight/2;
-	Rectangle rectP2;
-	rectP2.width=8;
-	rectP2.height=75;
-	rectP2.x=screenWidth-(float)screenWidth/20;
-	rectP2.y=(float)screenHeight/2;
-	Color rectP1Color=BLUE;
-	Color rectP2Color=MAROON;
-	Color ballColor=WHITE;
-	Vector2 ballSpeed={ 7.5f,6.0f };
-	int rectSpeed=8;
-	int ballRadius=10;
-	int puntosP1=0;
-	int puntosP2=0;
 	int colorCounterP1=0;
 	int colorCounterP2=4;
 	bool rect1Collision=false;
@@ -59,80 +54,25 @@ int main()
 	bool rect2PrevColor=false;
 	bool rect2NextColor=false;
 	bool hasCollided=false;
-	bool gameMenuOn=true;
-	bool gameOver=false;
-	Vector2 TriBase={ 5,5 };
-	Vector2 TriCat1={ 5,5 };
-	Vector2 TriCat2={ 5,5 };
+	bool gameMenuOn;
 
 	SetTargetFPS(60);// Set our game to run at 60 frames-per-second
 	//--------------------------------------------------------------------------------------
 	do {
 		while (gameMenuOn&&!WindowShouldClose())
 		{
-			ballMenuPosition=GetMousePosition();
-
-			bool menuCollision = CheckCollisionCircleRec(ballMenuPosition, ballRadius, rectMenu);
-			bool menuCollision2=CheckCollisionCircleRec(ballMenuPosition, ballRadius, rectMenu4);
+			//Menu Buttons
+			menuBall.Position=GetMousePosition();
+			Rectangle playbutton;
+			bool menuCollision = CheckCollisionCircleRec(menuBall.Position, menuBall.Radius, playbutton);
+			bool menuCollision2=CheckCollisionCircleRec(menuBall.Position, menuBall.Radius, exitButton);
 			if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && menuCollision) {
 				gameMenuOn = false;
 			}
 			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && menuCollision2) {
 				return 0;
 			}
-			rect1PrevColor = CheckCollisionPointTriangle(ballMenuPosition,
-				(Vector2){(rectP1.x + (rectP1.width / 2)) - 10, (rectP1.y + (rectP1.height / 2) - 10)},
-				(Vector2){(rectP1.x + (rectP1.width / 2)) - 20, (rectP1.y + (rectP1.height / 2))},
-				(Vector2) {(rectP1.x + (rectP1.width / 2)) - 10, (rectP1.y + (rectP1.height / 2) + 10)});
-			rect1NextColor = CheckCollisionPointTriangle(ballMenuPosition,
-				(Vector2){(rectP1.x + (rectP1.width / 2)) + 10, (rectP1.y + (rectP1.height / 2) - 10)},
-				(Vector2){(rectP1.x + (rectP1.width / 2)) + 10, (rectP1.y + (rectP1.height / 2) + 10)},
-				(Vector2){(rectP1.x + (rectP1.width / 2)) + 20, (rectP1.y + (rectP1.height / 2))});
-			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && rect1PrevColor) {
-				colorCounterP1--;
-				if (colorCounterP1 == colorCounterP2) { colorCounterP1--; }
-			}
-			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && rect1NextColor) {
-				colorCounterP1++;
-				if (colorCounterP1 == colorCounterP2) { colorCounterP1++; }
-			}
-			if (colorCounterP1 < 0) {
-				colorCounterP1 = 8;
-			}
-			if (colorCounterP1 > 8)
-			{
-				colorCounterP1 = 0;
-			}
-			switch (colorCounterP1)
-			{
-			case 0:
-				rectP1Color = BLUE;
-				break;
-			case 1:
-				rectP1Color = SKYBLUE;
-				break;
-			case 2:
-				rectP1Color = DARKBLUE;
-				break;
-			case 3:
-				rectP1Color = MAROON;
-				break;
-			case 4:
-				rectP1Color = YELLOW;
-				break;
-			case 5:
-				rectP1Color = GREEN;
-				break;
-			case 6:
-				rectP1Color = LIME;
-				break;
-			case 7:
-				rectP1Color = BROWN;
-				break;
-			case 8:
-				rectP1Color = DARKBROWN;
-				break;
-			}
+			//Changing bar colors
 			rect2PrevColor = CheckCollisionPointTriangle(ballMenuPosition,
 				(Vector2){(rectP2.x + (rectP2.width / 2)) - 10, (rectP2.y + (rectP2.height / 2) - 10)},
 				(Vector2){(rectP2.x + (rectP2.width / 2)) - 20, (rectP2.y + (rectP2.height / 2))},
@@ -186,6 +126,7 @@ int main()
 				rectP2Color = DARKBROWN;
 				break;
 			}
+			//Draw Menu
 			BeginDrawing();
 			ClearBackground(BLACK);
 			DrawCircleV(ballPosition,ballRadius-5,MAROON);
@@ -229,15 +170,15 @@ int main()
 
 			// Check walls collision for bouncing
 			if ((ballPosition.x >= (GetScreenWidth() - ballRadius))) {
-				ballPosition.x = (float)screenWidth / 2;
-				ballPosition.y = (float)screenHeight / 2;
+				ballPosition.x =screenWidth / 2;
+				ballPosition.y =screenHeight / 2;
 				puntosP1++;
 				ballSpeed.x = 7.5f;
 				ballSpeed.y = 6.0f;
 			}
 			if (ballPosition.x <= ballRadius) {
-				ballPosition.x = (float)screenWidth / 2;
-				ballPosition.y = (float)screenHeight / 2;
+				ballPosition.x =screenWidth / 2;
+				ballPosition.y =screenHeight / 2;
 				puntosP2++;
 				ballSpeed.x = -7.5f;
 				ballSpeed.y = -6.0f;
@@ -308,8 +249,8 @@ int main()
 
 			ClearBackground(BLACK);
 
-			DrawText(TextFormat("P1: %i", puntosP1), (float)screenWidth / 20, 10, 20, RAYWHITE);
-			DrawText(TextFormat("P2: %i", puntosP2), screenWidth - (float)screenWidth / 10, 10, 20, RAYWHITE);
+			DrawText(TextFormat("P1: %i", puntosP1), screenWidth / 20, 10, 20, RAYWHITE);
+			DrawText(TextFormat("P2: %i", puntosP2), screenWidth - screenWidth / 10, 10, 20, RAYWHITE);
 			DrawCircleV(ballPosition, ballRadius, ballColor);
 			DrawRectangleRec(rectP1, rectP1Color);
 			DrawRectangleRec(rectP2, rectP2Color);
@@ -337,17 +278,17 @@ int main()
 			if (puntosP1 >= 10) {
 				BeginDrawing();
 				ClearBackground(BLACK);
-				DrawText(TextFormat("Player 1 wins!"), ((float)screenWidth / 2) - 60, 10, 20, RAYWHITE);
+				DrawText(TextFormat("Player 1 wins!"), (screenWidth / 2) - 60, 10, 20, RAYWHITE);
 			}
 			if (puntosP2 >= 10) {
 				BeginDrawing();
 				ClearBackground(BLACK);
-				DrawText(TextFormat("Player 2 wins!"), ((float)screenWidth / 2) - 70, 10, 20, RAYWHITE);
+				DrawText(TextFormat("Player 2 wins!"), (screenWidth / 2) - 70, 10, 20, RAYWHITE);
 			}
 
 			DrawRectangleRec(rectMenu3, RED);
-			DrawText(TextFormat("P1: %i", puntosP1), (float)screenWidth / 4, 10, 20, RAYWHITE);
-			DrawText(TextFormat("P2: %i", puntosP2), screenWidth - (float)screenWidth / 4, 10, 20, RAYWHITE);
+			DrawText(TextFormat("P1: %i", puntosP1), screenWidth / 4, 10, 20, RAYWHITE);
+			DrawText(TextFormat("P2: %i", puntosP2), screenWidth - screenWidth / 4, 10, 20, RAYWHITE);
 			DrawText("Back to main menu", rectMenu3.x + 10, rectMenu3.y + 15, 20, RAYWHITE);
 			DrawRectangleRec(rectMenu2, RED);
 			DrawText("Play again", rectMenu2.x+45, rectMenu2.y +15, 20, RAYWHITE);
@@ -360,3 +301,60 @@ int main()
 	//--------------------------------------------------------------------------------------
 	return 0;
 }
+
+void changePlayerColor(Player &player, Player otherPlayer) {
+	int colorCounter;
+	bool playerPrevColor = CheckCollisionPointTriangle(menuBall.Position,
+		(Vector2){(player.Position.x + (player.Size.x / 2)) - 10, (player.Position.y + (player.Size.y / 2) - 10)},
+		(Vector2){(player.Position.x + (player.Size.x / 2)) - 20, (player.Position.y + (player.Size.y / 2))},
+		(Vector2){(player.Position.x + (player.Size.x / 2)) - 10, (player.Position.y + (player.Size.y / 2) + 10)});
+	bool playerNextColor = CheckCollisionPointTriangle(menuBall.Position,
+		(Vector2){(player.Position.x + (player.Size.x / 2)) + 10, (player.Position.y + (player.Size.y / 2) - 10)},
+		(Vector2){(player.Position.x + (player.Size.x / 2)) + 10, (player.Position.y + (player.Size.y / 2) + 10)},
+		(Vector2){(player.Position.x + (player.Size.x / 2)) + 20, (player.Position.y + (player.Size.y / 2))});
+	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && playerPrevColor) {
+		colorCounter--;
+		if ( == colorCounterP1) { colorCounterP2--; }
+	}
+	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && rect2NextColor) {
+		colorCounterP2++;
+		if (colorCounterP2 == colorCounterP1) { colorCounterP2++; }
+	}
+	if (colorCounterP2 < 0) {
+		colorCounterP2 = 8;
+	}
+	if (colorCounterP2 > 8)
+	{
+		colorCounterP2 = 0;
+	}
+	switch (colorCounterP2)
+	{
+	case 0:
+		rectP2Color = BLUE;
+		break;
+	case 1:
+		rectP2Color = SKYBLUE;
+		break;
+	case 2:
+		rectP2Color = DARKBLUE;
+		break;
+	case 3:
+		rectP2Color = MAROON;
+		break;
+	case 4:
+		rectP2Color = YELLOW;
+		break;
+	case 5:
+		rectP2Color = GREEN;
+		break;
+	case 6:
+		rectP2Color = LIME;
+		break;
+	case 7:
+		rectP2Color = BROWN;
+		break;
+	case 8:
+		rectP2Color = DARKBROWN;
+		break;
+	}
+};
