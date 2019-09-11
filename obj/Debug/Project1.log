@@ -18,15 +18,14 @@ c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(286): warning C4552: 
 c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(290): warning C4552: "+": el resultado de la expresión no se usa
 c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(311): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
 c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(312): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(313): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(314): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(326): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(327): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(342): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(347): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(313): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(324): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(325): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(340): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(345): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(349): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(350): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
 c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(351): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(352): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
 c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(353): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(355): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
 c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(13): warning C4101: 'ballMenuColor': variable local sin referencia
   Project1.vcxproj -> C:\Users\Juan Cruz\Desktop\Pong_raylib\bin\Debug\Project1.exe

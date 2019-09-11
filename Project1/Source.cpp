@@ -60,7 +60,7 @@ int main()
 	bool rect2NextColor=false;
 	bool hasCollided=false;
 	bool gameMenuOn=true;
-	bool GameOver=false;
+	bool gameOver=false;
 	Vector2 TriBase={ 5,5 };
 	Vector2 TriCat1={ 5,5 };
 	Vector2 TriCat2={ 5,5 };
@@ -214,7 +214,7 @@ int main()
 			EndDrawing();
 		}
 		// Main game loop
-		while (!GameOver && !WindowShouldClose())// Detect window close button or ESC key
+		while (!gameOver && !WindowShouldClose())// Detect window close button or ESC key
 		{
 			// Update
 			//----------------------------------------------------------------------------------
@@ -299,7 +299,7 @@ int main()
 
 			if (puntosP1 >= 10 || puntosP2 >= 10)
 			{
-				GameOver = true;
+				gameOver = true;
 			}
 
 			// Draw
@@ -310,17 +310,15 @@ int main()
 
 			DrawText(TextFormat("P1: %i", puntosP1), (float)screenWidth / 20, 10, 20, RAYWHITE);
 			DrawText(TextFormat("P2: %i", puntosP2), screenWidth - (float)screenWidth / 10, 10, 20, RAYWHITE);
-			DrawText(TextFormat("Press I to reset point"), ((float)screenWidth / 2) - 120, 10, 20, RAYWHITE);
 			DrawCircleV(ballPosition, ballRadius, ballColor);
 			DrawRectangleRec(rectP1, rectP1Color);
 			DrawRectangleRec(rectP2, rectP2Color);
-
 
 			EndDrawing();
 			//----------------------------------------------------------------------------------
 		}
 
-		while (GameOver && !WindowShouldClose()) {
+		while (gameOver && !WindowShouldClose()) {
 
 			ballMenuPosition = GetMousePosition();
 			bool menuCollision2 = CheckCollisionCircleRec(ballMenuPosition, ballRadius, rectMenu2);
@@ -328,13 +326,13 @@ int main()
 			if (menuCollision2&&IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
 				puntosP1 = 0;
 				puntosP2 = 0;
-				GameOver = false;
+				gameOver = false;
 			}
 			if (menuCollision3&&IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
 				gameMenuOn = true;
 				puntosP1 = 0;
 				puntosP2 = 0;
-				GameOver = false;
+				gameOver = false;
 			}
 			if (puntosP1 >= 10) {
 				BeginDrawing();
@@ -350,12 +348,12 @@ int main()
 			DrawRectangleRec(rectMenu3, RED);
 			DrawText(TextFormat("P1: %i", puntosP1), (float)screenWidth / 4, 10, 20, RAYWHITE);
 			DrawText(TextFormat("P2: %i", puntosP2), screenWidth - (float)screenWidth / 4, 10, 20, RAYWHITE);
-			DrawText("Back to main menu", rectMenu.x - 40, rectMenu.y + 15, 20, RAYWHITE);
+			DrawText("Back to main menu", rectMenu3.x + 10, rectMenu3.y + 15, 20, RAYWHITE);
 			DrawRectangleRec(rectMenu2, RED);
-			DrawText("Play again", rectMenu.x, rectMenu.y - 85, 20, RAYWHITE);
+			DrawText("Play again", rectMenu2.x+45, rectMenu2.y +15, 20, RAYWHITE);
 			EndDrawing();
 		}
-	}while (!GameOver && !WindowShouldClose());
+	}while (!gameOver && !WindowShouldClose());
 	// De-Initialization
 //--------------------------------------------------------------------------------------
 	CloseWindow();        // Close window and OpenGL context
