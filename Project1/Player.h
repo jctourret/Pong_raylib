@@ -17,3 +17,4 @@ Player player2;
 
 void drawPlayer(Player player);
 void playerCollidesW(Player player);
+void playersMove(Player &player1, Player &player2);

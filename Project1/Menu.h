@@ -11,13 +11,8 @@ struct Cursor {
 };
 Cursor menuCursor;
 
-struct MenuButton {
-	Vector2 Size;
-	Vector2 Position;
-};
-
-MenuButton playButton;
-MenuButton exitButton;
+Rectangle playButton;
+Rectangle exitButton;
 
 struct Triangle
 {
@@ -30,6 +25,12 @@ struct Triangle
 Triangle prevColor;
 Triangle nextColor;
 
+void drawBackground();
+void initMenuButtons(Rectangle &playButton, Rectangle &exitButton);
+void drawMenuButton(Rectangle rect);
+void drawMenuText(Player player1, Player player2);
 void initTriangles(Triangle &prevColor, Triangle &nextColor, Player player);
 void drawTriangles(Triangle prevColor, Triangle nextColor);
-void buttonPress();
+bool cursorOnTriangle(Triangle tri, Cursor cursor);
+void clickTriangle(Player player, Player otherPlayer);
+void changePlayerColor(Player player);

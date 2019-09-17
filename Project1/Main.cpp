@@ -9,98 +9,15 @@ struct Ball{
 Ball playBall;
 Ball menuBall;
 
-
-
 int main()
 {
 	// Initialization
 	//--------------------------------------------------------------------------------------
 	// Set our game to run at 60 frames-per-second
 	//--------------------------------------------------------------------------------------
-	do {
-		while (gameMenuOn&&!WindowShouldClose())
-		{
-			//Menu Buttons
-			menuBall.Position=GetMousePosition();
-			Rectangle playbutton;
-			bool menuCollision = CheckCollisionCircleRec(menuBall.Position, menuBall.Radius, playbutton);
-			bool menuCollision2=CheckCollisionCircleRec(menuBall.Position, menuBall.Radius, exitButton);
-			if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && menuCollision) {
-				gameMenuOn = false;
-			}
-			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && menuCollision2) {
-				return 0;
-			}
-			//Changing bar colors
-			
-			
-			if (colorCounterP2 < 0) {
-				colorCounterP2 = 8;
-			}
-			if (colorCounterP2 > 8)
-			{
-				colorCounterP2 = 0;
-			}
-			switch (colorCounterP2)
-			{
-			case 0:
-				rectP2Color = BLUE;
-				break;
-			case 1:
-				rectP2Color = SKYBLUE;
-				break;
-			case 2:
-				rectP2Color = DARKBLUE;
-				break;
-			case 3:
-				rectP2Color = MAROON;
-				break;
-			case 4:
-				rectP2Color = YELLOW;
-				break;
-			case 5:
-				rectP2Color = GREEN;
-				break;
-			case 6:
-				rectP2Color = LIME;
-				break;
-			case 7:
-				rectP2Color = BROWN;
-				break;
-			case 8:
-				rectP2Color = DARKBROWN;
-				break;
-			}
-			//Draw Menu
-			BeginDrawing();
-			ClearBackground(BLACK);
-			DrawRectangleRec(rectMenu,RED);
-			DrawRectangleRec(rectMenu4, RED);
-			DrawTriangle((Vector2){(rectP2.x+(rectP2.width/2))-10,(rectP2.y+(rectP2.height/2)-10)},
-						(Vector2){(rectP2.x+(rectP2.width/2))-20,(rectP2.y+(rectP2.height/2))},
-						(Vector2){(rectP2.x+(rectP2.width/2))-10,(rectP2.y+(rectP2.height/2)+10)}, VIOLET);
-			DrawTriangle((Vector2){(rectP2.x+(rectP2.width/2))+10,(rectP2.y+(rectP2.height/2)-10)},
-						(Vector2){(rectP2.x +(rectP2.width/2))+10,(rectP2.y+(rectP2.height/2)+10)},
-						(Vector2){(rectP2.x +(rectP2.width/2))+20,(rectP2.y+(rectP2.height/2))},VIOLET);
-			DrawText("Usa las flechas para cambiar el color de las barras!", 140, 30, 20, RAYWHITE);
-			DrawText("Presiona 'Play' cuando estes listo para jugar.", 170, 50, 20, RAYWHITE);
-			DrawText(TextFormat("P1: %i", puntosP1), (float)screenWidth / 20, 10, 20, RAYWHITE);
-			DrawText(TextFormat("P2: %i", puntosP2), screenWidth - (float)screenWidth / 10, 10, 20, RAYWHITE);
-			DrawText("Play", rectMenu.x + 30, rectMenu.y + 15, 20, RAYWHITE);
-			DrawText("Exit", rectMenu4.x + 30, rectMenu4.y + 15, 20, RAYWHITE);
-			EndDrawing();
-		}
 		// Main game loop
 		while (!gameOver && !WindowShouldClose())// Detect window close button or ESC key
 		{
-			// Update
-			//----------------------------------------------------------------------------------
-			if (IsKeyDown(KEY_W))rectP1.y -= rectSpeed;
-			if (IsKeyDown(KEY_S))rectP1.y += rectSpeed;
-			if (IsKeyDown(KEY_UP))rectP2.y -= rectSpeed;
-			if (IsKeyDown(KEY_DOWN))rectP2.y += rectSpeed;
-			//----------------------------------------------------------------------------------
-			// Moves Ball
 			ballPosition.x += ballSpeed.x;
 			ballPosition.y += ballSpeed.y;
 
@@ -232,60 +149,3 @@ int main()
 	//--------------------------------------------------------------------------------------
 	return 0;
 }
-
-void changePlayerColor(Player &player, Player otherPlayer) {
-	int colorCounter;
-	bool playerPrevColor = CheckCollisionPointTriangle(menuBall.Position,
-		(Vector2){(player.Position.x + (player.Size.x / 2)) - 10, (player.Position.y + (player.Size.y / 2) - 10)},
-		(Vector2){(player.Position.x + (player.Size.x / 2)) - 20, (player.Position.y + (player.Size.y / 2))},
-		(Vector2){(player.Position.x + (player.Size.x / 2)) - 10, (player.Position.y + (player.Size.y / 2) + 10)});
-	bool playerNextColor = CheckCollisionPointTriangle(menuBall.Position,
-		(Vector2){(player.Position.x + (player.Size.x / 2)) + 10, (player.Position.y + (player.Size.y / 2) - 10)},
-		(Vector2){(player.Position.x + (player.Size.x / 2)) + 10, (player.Position.y + (player.Size.y / 2) + 10)},
-		(Vector2){(player.Position.x + (player.Size.x / 2)) + 20, (player.Position.y + (player.Size.y / 2))});
-	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && playerPrevColor) {
-		colorCounter--;
-		if ( == colorCounterP1) { colorCounterP2--; }
-	}
-	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && rect2NextColor) {
-		colorCounterP2++;
-		if (colorCounterP2 == colorCounterP1) { colorCounterP2++; }
-	}
-	if (colorCounterP2 < 0) {
-		colorCounterP2 = 8;
-	}
-	if (colorCounterP2 > 8)
-	{
-		colorCounterP2 = 0;
-	}
-	switch (colorCounterP2)
-	{
-	case 0:
-		rectP2Color = BLUE;
-		break;
-	case 1:
-		rectP2Color = SKYBLUE;
-		break;
-	case 2:
-		rectP2Color = DARKBLUE;
-		break;
-	case 3:
-		rectP2Color = MAROON;
-		break;
-	case 4:
-		rectP2Color = YELLOW;
-		break;
-	case 5:
-		rectP2Color = GREEN;
-		break;
-	case 6:
-		rectP2Color = LIME;
-		break;
-	case 7:
-		rectP2Color = BROWN;
-		break;
-	case 8:
-		rectP2Color = DARKBROWN;
-		break;
-	}
-};

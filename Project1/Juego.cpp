@@ -16,3 +16,7 @@ void init() {
 	bool gameMenuOn;
 	SetTargetFPS(60);
 }
+
+void update() {
+	
+}
