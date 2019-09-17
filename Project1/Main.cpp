@@ -1,62 +1,21 @@
 #include "raylib.h"
 
-struct Player{
-	Vector2 Size;
-	Vector2 Position;
-	int Speed = 8;
-	bool win;
-	Color Color;
-	int Points;
-};
-
-Player player1;
-Player player2;
-
-struct MenuButton{
-	Vector2 Size;
-	Vector2 Position;
-};
-
-MenuButton playButton;
-MenuButton exitButton;
-
 struct Ball{
 	Vector2 Position;
 	Color Color = WHITE;
 	Vector2 Speed = { 7.5f,6.0f };
 	int Radius=10;
 };
-
 Ball playBall;
 Ball menuBall;
 
-struct Triangles
-{
-	Vector2 TriBase = { 5,5 };
-	Vector2 TriCat1 = { 5,5 };
-	Vector2 TriCat2 = { 5,5 };
-	Vector2 Position;
-};
+
 
 int main()
 {
 	// Initialization
 	//--------------------------------------------------------------------------------------
-	const int screenWidth=800;
-	const int screenHeight=450;
-	InitWindow(screenWidth,screenHeight,"raylib [core] example - keyboard input");
-	int colorCounterP1=0;
-	int colorCounterP2=4;
-	bool rect1Collision=false;
-	bool rect2Collision=false;
-	bool rect1PrevColor=false;
-	bool rect1NextColor=false;
-	bool rect2PrevColor=false;
-	bool rect2NextColor=false;
-	bool hasCollided=false;
-	bool gameMenuOn;
-
-	SetTargetFPS(60);// Set our game to run at 60 frames-per-second
+	// Set our game to run at 60 frames-per-second
 	//--------------------------------------------------------------------------------------
 	do {
 		while (gameMenuOn&&!WindowShouldClose())
@@ -73,22 +32,8 @@ int main()
 				return 0;
 			}
 			//Changing bar colors
-			rect2PrevColor = CheckCollisionPointTriangle(ballMenuPosition,
-				(Vector2){(rectP2.x + (rectP2.width / 2)) - 10, (rectP2.y + (rectP2.height / 2) - 10)},
-				(Vector2){(rectP2.x + (rectP2.width / 2)) - 20, (rectP2.y + (rectP2.height / 2))},
-				(Vector2){(rectP2.x + (rectP2.width / 2)) - 10, (rectP2.y + (rectP2.height / 2) + 10)});
-			rect2NextColor = CheckCollisionPointTriangle(ballMenuPosition,
-				(Vector2){(rectP2.x + (rectP2.width / 2)) + 10, (rectP2.y + (rectP2.height / 2) - 10)},
-				(Vector2){(rectP2.x + (rectP2.width / 2)) + 10, (rectP2.y + (rectP2.height / 2) + 10)},
-				(Vector2){(rectP2.x + (rectP2.width / 2)) + 20, (rectP2.y + (rectP2.height / 2))});
-			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && rect2PrevColor) {
-				colorCounterP2--;
-				if (colorCounterP2 == colorCounterP1) { colorCounterP2--; }
-			}
-			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && rect2NextColor) {
-				colorCounterP2++;
-				if (colorCounterP2 == colorCounterP1) { colorCounterP2++; }
-			}
+			
+			
 			if (colorCounterP2 < 0) {
 				colorCounterP2 = 8;
 			}
@@ -129,17 +74,8 @@ int main()
 			//Draw Menu
 			BeginDrawing();
 			ClearBackground(BLACK);
-			DrawCircleV(ballPosition,ballRadius-5,MAROON);
-			DrawRectangleRec(rectP1,rectP1Color);
-			DrawRectangleRec(rectP2,rectP2Color);
 			DrawRectangleRec(rectMenu,RED);
-			DrawRectangleRec(rectMenu4,RED);
-			DrawTriangle((Vector2){(rectP1.x+(rectP1.width/2))-10,(rectP1.y+(rectP1.height/2)-10)},
-						(Vector2){(rectP1.x+(rectP1.width/2))-20,(rectP1.y+(rectP1.height/2))},
-						(Vector2){(rectP1.x+(rectP1.width/2))-10,(rectP1.y+(rectP1.height/2)+10)},VIOLET);
-			DrawTriangle((Vector2){ (rectP1.x+(rectP1.width/2))+10,(rectP1.y+(rectP1.height/2)-10)},
-						(Vector2){(rectP1.x+(rectP1.width/2))+10,(rectP1.y+(rectP1.height/2)+10)},
-						(Vector2){(rectP1.x+(rectP1.width/2))+20,(rectP1.y+(rectP1.height/2))},VIOLET);
+			DrawRectangleRec(rectMenu4, RED);
 			DrawTriangle((Vector2){(rectP2.x+(rectP2.width/2))-10,(rectP2.y+(rectP2.height/2)-10)},
 						(Vector2){(rectP2.x+(rectP2.width/2))-20,(rectP2.y+(rectP2.height/2))},
 						(Vector2){(rectP2.x+(rectP2.width/2))-10,(rectP2.y+(rectP2.height/2)+10)}, VIOLET);
@@ -184,11 +120,6 @@ int main()
 				ballSpeed.y = -6.0f;
 			}
 			if ((ballPosition.y >= (GetScreenHeight() - ballRadius)) || (ballPosition.y <= ballRadius))ballSpeed.y *= -1.0f;
-			// Check Rectangle's collision with walls
-			if ((rectP1.y + rectP1.height) >= GetScreenHeight()) rectP1.y = GetScreenHeight() - rectP1.height;
-			else if (rectP1.y <= 0) rectP1.y = 0;
-			if ((rectP2.y + rectP2.height) >= GetScreenHeight()) rectP2.y = GetScreenHeight() - rectP2.height;
-			else if (rectP2.y <= 0) rectP2.y = 0;
 			// Ball only collides with rectangles once
 			rect1Collision = CheckCollisionCircleRec(ballPosition, ballRadius, rectP1);
 			rect2Collision = CheckCollisionCircleRec(ballPosition, ballRadius, rectP2);
