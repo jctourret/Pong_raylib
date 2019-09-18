@@ -12,7 +12,6 @@ void init() {
 	bool rect1NextColor = false;
 	bool rect2PrevColor = false;
 	bool rect2NextColor = false;
-	bool hasCollided = false;
 	bool gameMenuOn;
 	SetTargetFPS(60);
 }

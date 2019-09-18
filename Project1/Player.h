@@ -3,8 +3,7 @@
 
 using namespace std;
 struct Player {
-	Vector2 Size;
-	Vector2 Position;
+	Rectangle Body;
 	int Speed = 8;
 	bool Win;
 	Color Color;
@@ -17,4 +16,5 @@ Player player2;
 
 void drawPlayer(Player player);
 void playerCollidesW(Player player);
-void playersMove(Player &player1, Player &player2);
+void player1Move(Player &player1);
+void player2Move(Player &player2);

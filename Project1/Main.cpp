@@ -1,14 +1,5 @@
 #include "raylib.h"
 
-struct Ball{
-	Vector2 Position;
-	Color Color = WHITE;
-	Vector2 Speed = { 7.5f,6.0f };
-	int Radius=10;
-};
-Ball playBall;
-Ball menuBall;
-
 int main()
 {
 	// Initialization
@@ -18,74 +9,8 @@ int main()
 		// Main game loop
 		while (!gameOver && !WindowShouldClose())// Detect window close button or ESC key
 		{
-			ballPosition.x += ballSpeed.x;
-			ballPosition.y += ballSpeed.y;
 
-			// Check walls collision for bouncing
-			if ((ballPosition.x >= (GetScreenWidth() - ballRadius))) {
-				ballPosition.x =screenWidth / 2;
-				ballPosition.y =screenHeight / 2;
-				puntosP1++;
-				ballSpeed.x = 7.5f;
-				ballSpeed.y = 6.0f;
-			}
-			if (ballPosition.x <= ballRadius) {
-				ballPosition.x =screenWidth / 2;
-				ballPosition.y =screenHeight / 2;
-				puntosP2++;
-				ballSpeed.x = -7.5f;
-				ballSpeed.y = -6.0f;
-			}
-			if ((ballPosition.y >= (GetScreenHeight() - ballRadius)) || (ballPosition.y <= ballRadius))ballSpeed.y *= -1.0f;
 			// Ball only collides with rectangles once
-			rect1Collision = CheckCollisionCircleRec(ballPosition, ballRadius, rectP1);
-			rect2Collision = CheckCollisionCircleRec(ballPosition, ballRadius, rectP2);
-			if (hasCollided == false && rect2Collision) {
-				if (rectP2.y + rectP2.height / 4 >= ballPosition.y){
-					if (ballSpeed.y > 0) { ballSpeed.y = -ballSpeed.y - 4; }// si esta bajando que la invierta y acelere
-					if (ballSpeed.y < 0) { ballSpeed.y - 4; } // si esta subiendo que acelere
-				}
-				if (rectP2.y + rectP2.height / 2 >= ballPosition.y && rectP2.y + rectP2.height / 4 < ballPosition.y) {
-					if (ballSpeed.y > 0) { ballSpeed.y = -ballSpeed.y-2; } // si esta bajando que la invierta y acelere
-					if (ballSpeed.y < 0) { ballSpeed.y - 2; } // si esta subiendo que acelere
-				}
-				if (rectP2.y + rectP2.height / 2 < ballPosition.y && rectP2.y + rectP2.height / 2 + rectP2.height / 4 > ballPosition.y) {
-					if (ballSpeed.y < 0) { ballSpeed.y = -ballSpeed.y + 2; } // si esta subiendo que se invierta  y acelere
-					if (ballSpeed.y > 0) { ballSpeed.y + 2; } // si esta bajando acelera
-				}
-				if (rectP2.y + rectP2.height / 2 + rectP2.height / 4 <= ballPosition.y) {
-					if (ballSpeed.y < 0) { ballSpeed.y = -ballSpeed.y + 4; }
-					if (ballSpeed.y > 0) { ballSpeed.y + 4; }
-				}
-				ballSpeed.x = -ballSpeed.x;
-				hasCollided = true;
-				ballColor = rectP2Color;
-			}
-			if (hasCollided == false && rect1Collision) {
-				if (rectP1.y + rectP1.height / 4 > ballPosition.y&&rectP1.y < ballPosition.y) {
-					if (ballSpeed.y > 0) { ballSpeed.y = -ballSpeed.y - 4; }
-					if (ballSpeed.y < 0) { ballSpeed.y - 4; }
-				}
-				if (rectP1.y + rectP1.height / 2 > ballPosition.y&&rectP1.y + rectP1.height / 4 < ballPosition.y) {
-					if (ballSpeed.y > 0) { ballSpeed.y = -ballSpeed.y + -2; }
-					if (ballSpeed.y < 0) { ballSpeed.y - 2; }
-				}
-				if (rectP1.y + rectP1.height / 2 < ballPosition.y && rectP1.y + rectP1.height / 2 + rectP1.height / 4 > ballPosition.y) {
-					if (ballSpeed.y < 0) { ballSpeed.y = -ballSpeed.y + 2; }
-					if (ballSpeed.y > 0) { ballSpeed.y + 2; }
-				}
-				if (rectP1.y + rectP1.height / 2 + rectP1.height / 4 < ballPosition.y && rectP1.y + rectP1.height > ballPosition.y) {
-					if (ballSpeed.y < 0) { ballSpeed.y = -ballSpeed.y + 4; }
-					if (ballSpeed.y > 0) { ballSpeed.y + 4; }
-				}
-				ballSpeed.x = -ballSpeed.x;
-				hasCollided = true;
-				ballColor = rectP1Color;
-			}
-			if (!(rect1Collision || rect2Collision)) {
-				hasCollided = false;
-			}
-
 			if (puntosP1 >= 10 || puntosP2 >= 10)
 			{
 				gameOver = true;
