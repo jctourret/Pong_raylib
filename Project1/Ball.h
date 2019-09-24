@@ -1,6 +1,6 @@
 #pragma once
-#include "raylib.h"
 #include  "Player.h"
+#include "raylib.h"
 struct Ball {
 	Vector2 Position;
 	Color Color = WHITE;
@@ -9,6 +9,5 @@ struct Ball {
 };
 Ball playBall;
 
-void ballMove(Ball ball);
-void ballBouncesWall(Player& player1, Player player2, Ball ball);
-void ballBouncesPlayer(Player player, Ball ball);
+void moveBall(Ball &ball);
+void drawBall(Ball ball);

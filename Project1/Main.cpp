@@ -1,40 +1,9 @@
 #include "raylib.h"
-
+#include "Game.h"
 int main()
 {
-	// Initialization
-	//--------------------------------------------------------------------------------------
-	// Set our game to run at 60 frames-per-second
-	//--------------------------------------------------------------------------------------
-		// Main game loop
-		while (!gameOver && !WindowShouldClose())// Detect window close button or ESC key
-		{
-
-			// Ball only collides with rectangles once
-			if (puntosP1 >= 10 || puntosP2 >= 10)
-			{
-				gameOver = true;
-			}
-
-			// Draw
-			//----------------------------------------------------------------------------------
-			BeginDrawing();
-
-			ClearBackground(BLACK);
-
-			DrawText(TextFormat("P1: %i", puntosP1), screenWidth / 20, 10, 20, RAYWHITE);
-			DrawText(TextFormat("P2: %i", puntosP2), screenWidth - screenWidth / 10, 10, 20, RAYWHITE);
-			DrawCircleV(ballPosition, ballRadius, ballColor);
-			DrawRectangleRec(rectP1, rectP1Color);
-			DrawRectangleRec(rectP2, rectP2Color);
-
-			EndDrawing();
-			//----------------------------------------------------------------------------------
-		}
-
 		while (gameOver && !WindowShouldClose()) {
 
-			ballMenuPosition = GetMousePosition();
 			bool menuCollision2 = CheckCollisionCircleRec(ballMenuPosition, ballRadius, rectMenu2);
 			bool menuCollision3 = CheckCollisionCircleRec(ballMenuPosition, ballRadius, rectMenu3);
 			if (menuCollision2&&IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {

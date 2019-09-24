@@ -33,4 +33,4 @@ void initTriangles(Triangle &prevColor, Triangle &nextColor, Player player);
 void drawTriangles(Triangle prevColor, Triangle nextColor);
 bool cursorOnTriangle(Triangle tri, Cursor cursor);
 void clickTriangle(Player player, Player otherPlayer);
-void changePlayerColor(Player player);
+void changePlayerColor(Player &player);

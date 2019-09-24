@@ -1,4 +1,7 @@
-#include "Juego.h"
+#include "Game.h"
+#include "raylib.h"
+#include "Menu.h"
+#include "Gameplay.h"
 
 void init() {
 	const int screenWidth = 800;
@@ -15,7 +18,18 @@ void init() {
 	bool gameMenuOn;
 	SetTargetFPS(60);
 }
+void input() {
 
+}
 void update() {
 	
+}
+void draw() {
+	BeginDrawing();
+	drawBackground();
+	drawMenuButton(playButton);
+	drawMenuButton(exitButton);
+	drawMenuText(player1,player2);
+	drawTriangles(prevColor,nextColor);
+	EndDrawing();
 }
