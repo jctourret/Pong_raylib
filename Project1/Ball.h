@@ -10,5 +10,5 @@ struct Ball {
 Ball playBall;
 
 void ballMove(Ball ball);
-void ballBouncesWall(Player player1, Player player2, Ball ball);
-void ballBouncesPlayer(Player player1, Player player2, Ball ball);
+void ballBouncesWall(Player& player1, Player player2, Ball ball);
+void ballBouncesPlayer(Player player, Ball ball);

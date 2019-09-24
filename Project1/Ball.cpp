@@ -4,7 +4,7 @@ void ballMove(Ball ball) {
 	ball.Position.x += ball.Speed.x;
 	ball.Position.y += ball.Speed.y;
 }
-void ballBouncesWall(Player player1, Player player2,Ball ball) {
+void ballBouncesWall(Player& player, Ball ball) {
 	if ((ball.Position.x >= (GetScreenWidth() - ball.Radius))) {
 		ball.Position.x = GetScreenWidth() / 2;
 		ball.Position.y = GetScreenHeight() / 2;
