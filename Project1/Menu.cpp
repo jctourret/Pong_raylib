@@ -1,5 +1,54 @@
 #include "Menu.h"
+#include "Player.h"
 #include "raylib.h"
+
+struct Cursor {
+	Vector2 Position;
+	Color Color = WHITE;
+	Vector2 Speed = { 7.5f,6.0f };
+	int Radius = 10;
+};
+
+extern Cursor menuCursor;
+
+Rectangle playButton;
+Rectangle exitButton;
+
+struct Triangle
+{
+	Vector2 TriBase;
+	Vector2 TriCat1;
+	Vector2 TriCat2;
+	Vector2 Position;
+};
+
+Triangle prevColorP1;
+Triangle nextColorP1;
+Triangle prevColorP2;
+Triangle nextColorP2;
+
+void initMenuButtons(Rectangle &playButton, Rectangle &exitButton);
+void drawBackground();
+bool buttonIsClicked(Cursor cursor, Rectangle rect);
+void drawMenuButton(Rectangle rect);
+void drawMenuText();
+void initTriangles(Triangle &prevColor, Triangle &nextColor, Player player);
+void drawTriangles(Triangle prevColor, Triangle nextColor, Player player);
+bool triangleIsClicked(Triangle prevColor, Cursor menuCursor);
+void setPrevColor(Player &player, Player otherPlayer, Triangle prevColor, Cursor menuCursor);
+void setNextColor(Player &player, Player otherPlayer, Triangle nextColor, Cursor menuCursor);
+
+void runMenu() {
+	initMenuButtons(playButton, exitButton);
+	BeginDrawing();
+	drawBackground();
+	drawMenuButton(playButton);
+	drawMenuButton(exitButton);
+	drawMenuText();
+	drawTriangles(prevColorP1, nextColorP1, player1);
+	drawTriangles(prevColorP2, nextColorP2, player2);
+
+}
 void initMenuButtons(Rectangle &playButton, Rectangle &exitButton) {
 	playButton.x = GetScreenWidth() / 2 - 50;
 	playButton.y = GetScreenHeight() / 2 + 10;
@@ -14,23 +63,18 @@ void initMenuButtons(Rectangle &playButton, Rectangle &exitButton) {
 void drawBackground() {
 	ClearBackground(BLACK);
 }
-bool cursorOnButton(Cursor cursor, Rectangle rect) {
-	;
-}
-void clickButton(Cursor cursor, Rectangle rect) {
-	if (CheckCollisionCircleRec(cursor.Position,cursor.Radius,rect)
-		&&IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-		
+bool buttonIsClicked(Cursor cursor, Rectangle rect) {
+	if (CheckCollisionCircleRec(cursor.Position, cursor.Radius, rect)
+		&& IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+		return true;
 	}
 }
 void drawMenuButton(Rectangle rect) {
 	DrawRectangleRec(rect, RED);
 }
-void drawMenuText(Player player1, Player player2) {
+void drawMenuText() {
 	DrawText("Usa las flechas para cambiar el color de las barras!", 140, 30, 20, RAYWHITE);
 	DrawText("Presiona 'Play' cuando estes listo para jugar.", 170, 50, 20, RAYWHITE);
-	DrawText(TextFormat("P1: %i", player1.Points), GetScreenWidth() / 20, 10, 20, RAYWHITE);
-	DrawText(TextFormat("P2: %i", player2.Points), GetScreenWidth() - GetScreenWidth() / 10, 10, 20, RAYWHITE);
 	DrawText("Play", playButton.x + 30, playButton.y + 15, 20, RAYWHITE);
 	DrawText("Exit", exitButton.x + 30, exitButton.y + 15, 20, RAYWHITE);
 }
@@ -49,24 +93,29 @@ void initTriangles(Triangle &prevColor, Triangle &nextColor, Player player) {
 	nextColor.TriCat2.x = (player.Body.x + (player.Body.width / 2) + 20);
 	nextColor.TriCat2.y = (player.Body.y + (player.Body.height / 2));
 }
-void drawTriangles(Triangle prevColor, Triangle nextColor) {
+void drawTriangles(Triangle prevColor, Triangle nextColor, Player player) {
+	initTriangles(prevColor, nextColor, player);
 	DrawTriangle(prevColor.TriBase, prevColor.TriCat1, prevColor.TriCat2, VIOLET);
 	DrawTriangle(nextColor.TriBase, nextColor.TriCat1, nextColor.TriCat2, VIOLET);
 }
-bool cursorOnTriangle(Triangle tri, Cursor cursor) {
-	CheckCollisionPointTriangle(menuCursor.Position, prevColor.TriBase, prevColor.TriCat1, prevColor.TriCat2);
+bool triangleIsClicked(Triangle prevColor, Cursor menuCursor) {
+	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointTriangle(menuCursor.Position, prevColor.TriBase, prevColor.TriCat1, prevColor.TriCat2)) {
+		return true;
+	}
 }
-void clickTriangle(Player player, Player otherPlayer) {
-	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && cursorOnTriangle(prevColor, menuCursor)) {
+void setPrevColor(Player &player, Player otherPlayer, Triangle prevColor, Cursor menuCursor) {
+	if (triangleIsClicked(prevColor, menuCursor)) {
 		player.ColorCounter--;
 		if (player.ColorCounter == otherPlayer.ColorCounter) { player.ColorCounter--; }
 	}
-	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && cursorOnTriangle(nextColor, menuCursor)) {
+	if (player.ColorCounter > 8) {
+		player.ColorCounter = 0;
+	}
+}
+void setNextColor(Player &player, Player otherPlayer, Triangle nextColor, Cursor menuCursor) {
+	if (triangleIsClicked(nextColor, menuCursor)) {
 		player.ColorCounter++;
 		if (player.ColorCounter == otherPlayer.ColorCounter) { player.ColorCounter++; }
-	}
-	if (player.ColorCounter < 0) {
-		player.ColorCounter = 8;
 	}
 	if (player.ColorCounter > 8) {
 		player.ColorCounter = 0;

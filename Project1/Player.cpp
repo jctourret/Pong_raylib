@@ -1,5 +1,4 @@
 #include "Player.h"
-#include "raylib.h"
 void drawPlayer(Player player){
 	BeginDrawing();
 	DrawRectangleRec(player.Body, player.Color);

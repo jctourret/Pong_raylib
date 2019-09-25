@@ -34,7 +34,9 @@ void ballBouncesWall(Player &player1, Player &player2, Ball ball) {
 	if ((ball.Position.y >= (GetScreenHeight() - ball.Radius)) || (ball.Position.y <= ball.Radius))ball.Speed.y *= -1.0f;
 }
 bool ballHittingPlayer(Ball ball, Player player) {
-	CheckCollisionCircleRec(ball.Position, ball.Radius, player.Body);
+	if (CheckCollisionCircleRec(ball.Position, ball.Radius, player.Body)) {
+		return true;
+	};
 }
 void ballBouncesPlayer(Player player, Ball &ball) {
 	ballHittingPlayer(ball, player);

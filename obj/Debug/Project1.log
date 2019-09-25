@@ -1,31 +1,20 @@
-﻿  Source.cpp
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(75): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(76): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(191): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(210): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(211): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(212): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(213): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(252): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(253): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(257): warning C4552: "-": el resultado de la expresión no se usa
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(261): warning C4552: "-": el resultado de la expresión no se usa
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(265): warning C4552: "+": el resultado de la expresión no se usa
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(269): warning C4552: "+": el resultado de la expresión no se usa
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(278): warning C4552: "-": el resultado de la expresión no se usa
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(282): warning C4552: "-": el resultado de la expresión no se usa
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(286): warning C4552: "+": el resultado de la expresión no se usa
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(290): warning C4552: "+": el resultado de la expresión no se usa
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(311): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(312): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(313): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(324): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(325): warning C4244: 'función': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(340): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(345): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(349): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(350): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(351): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(353): warning C4244: 'función': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\source.cpp(13): warning C4101: 'ballMenuColor': variable local sin referencia
-  Project1.vcxproj -> C:\Users\Juan Cruz\Desktop\Pong_raylib\bin\Debug\Project1.exe
+﻿  Exit.cpp
+c:\users\administrador\desktop\pong_raylib\project1\exit.cpp(12): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Game.cpp
+  Menu.cpp
+c:\users\administrador\desktop\pong_raylib\project1\menu.cpp(53): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\administrador\desktop\pong_raylib\project1\menu.cpp(54): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\administrador\desktop\pong_raylib\project1\menu.cpp(58): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\administrador\desktop\pong_raylib\project1\menu.cpp(59): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\administrador\desktop\pong_raylib\project1\menu.cpp(67): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\administrador\desktop\pong_raylib\project1\menu.cpp(78): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\administrador\desktop\pong_raylib\project1\menu.cpp(79): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  Generando código...
+c:\users\administrador\desktop\pong_raylib\project1\menu.cpp(71): warning C4715: 'buttonIsClicked': no todas las rutas de acceso de control devuelven un valor
+c:\users\administrador\desktop\pong_raylib\project1\menu.cpp(105): warning C4715: 'triangleIsClicked': no todas las rutas de acceso de control devuelven un valor
+Gameplay.obj : error LNK2001: símbolo externo "struct Player player1" (?player1@@3UPlayer@@A) sin resolver
+Menu.obj : error LNK2001: símbolo externo "struct Player player1" (?player1@@3UPlayer@@A) sin resolver
+Gameplay.obj : error LNK2001: símbolo externo "struct Player player2" (?player2@@3UPlayer@@A) sin resolver
+Menu.obj : error LNK2001: símbolo externo "struct Player player2" (?player2@@3UPlayer@@A) sin resolver
+Gameplay.obj : error LNK2001: símbolo externo "struct Ball playBall" (?playBall@@3UBall@@A) sin resolver
+C:\Users\Administrador\Desktop\Pong_raylib\bin\Debug\Project1.exe : fatal error LNK1120: 3 externos sin resolver
