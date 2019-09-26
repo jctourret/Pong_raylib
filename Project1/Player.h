@@ -11,9 +11,10 @@ struct Player {
 	int ColorCounter;
 };
 
-extern Player player1;
-extern Player player2;
+static Player player1;
+static Player player2;
 
+void initPlayers(Player &player, Player &otherPlayer);
 void drawPlayer(Player player);
 void player1Move(Player &player1);
 void player2Move(Player &player2);

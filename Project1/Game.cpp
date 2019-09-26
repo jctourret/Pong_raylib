@@ -10,9 +10,13 @@ enum GameStates {
 	Exit
 };
 GameStates GameState;
+void init();
+
 void runGame() {
+	init();
 	switch (GameState) {
 	case Menu:
+		runMenu();
 		break;
 	case Gameplay:
 		break;

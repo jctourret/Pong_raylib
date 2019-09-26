@@ -9,7 +9,7 @@ struct Ball {
 	Vector2 Speed = { 7.5f,6.0f };
 	float Radius = 10;
 };
-extern Ball playBall;
+static Ball playBall;
 
 void moveBall(Ball &ball);
 void drawBall(Ball ball);

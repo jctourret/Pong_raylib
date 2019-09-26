@@ -1,8 +1,18 @@
 #include "Player.h"
+void initPlayers(Player &player,Player &otherPlayer) {
+	player.Body.x = GetScreenWidth() / 20;
+	player.Body.y = GetScreenHeight() / 2;
+	player.Body.height = 100;
+	player.Body.width = 6;
+	player.ColorCounter = 0;
+	otherPlayer.Body.x = GetScreenWidth() - GetScreenWidth() / 20;
+	otherPlayer.Body.y = GetScreenHeight() / 2;
+	otherPlayer.Body.height = 100;
+	otherPlayer.Body.width = 6;
+	otherPlayer.ColorCounter = 3;
+}
 void drawPlayer(Player player){
-	BeginDrawing();
 	DrawRectangleRec(player.Body, player.Color);
-	EndDrawing();
 }
 void player1Move(Player &player1) {
 	if (IsKeyDown(KEY_W))player1.Body.y -= player1.Speed;

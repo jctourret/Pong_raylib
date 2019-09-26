@@ -5,6 +5,9 @@ bool checkGameState(Player player) {
 	{
 		return true;
 	}
+	else{
+		return false;
+	}
 }
 void drawGameData(Player player1,Player player2) {
 	DrawText(TextFormat("P1: %i", player1.Points), GetScreenWidth() / 20, 10, 20, RAYWHITE);
@@ -36,7 +39,10 @@ void ballBouncesWall(Player &player1, Player &player2, Ball ball) {
 bool ballHittingPlayer(Ball ball, Player player) {
 	if (CheckCollisionCircleRec(ball.Position, ball.Radius, player.Body)) {
 		return true;
-	};
+	}
+	else{
+		return false;
+	}
 }
 void ballBouncesPlayer(Player player, Ball &ball) {
 	ballHittingPlayer(ball, player);
