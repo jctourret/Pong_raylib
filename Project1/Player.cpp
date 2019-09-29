@@ -1,4 +1,6 @@
 #include "Player.h"
+Player player1;
+Player player2;
 void initPlayers(Player &player,Player &otherPlayer) {
 	player.Body.x = GetScreenWidth() / 20;
 	player.Body.y = GetScreenHeight() / 2;
