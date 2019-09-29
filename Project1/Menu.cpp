@@ -1,3 +1,4 @@
+#include "Game.h"
 #include "Menu.h"
 #include "Player.h"
 #include "raylib.h"
@@ -38,25 +39,15 @@ void setPrevColor(Player &player, Player otherPlayer, Triangle prevColor, Cursor
 void setNextColor(Player &player, Player otherPlayer, Triangle nextColor, Cursor menuCursor);
 void changePlayerColor(Player &player);
 void followMenuCursor(Cursor &cursor);
+void exitGame(Cursor cursor, Rectangle button);
+void startGame(Cursor cursor, Rectangle button, GameStates &gamestate);
 void initScreen();
-void initMenu();
 void updateMenu();
 void drawMenu();
 
 void runMenu() {
-	initScreen();
-	initMenu();
-	while (true)
-	{
-		updateMenu();
-		drawMenu();
-	}
-}
-void initScreen(){
-	const int screenWidth = GetScreenWidth();
-	const int screenHeight = GetScreenHeight();
-	InitWindow(screenWidth, screenHeight, "Pong");
-	SetTargetFPS(60);
+	updateMenu();
+	drawMenu();
 }
 void initMenu(){
 	initMenuButtons(playButton, exitButton);
@@ -72,6 +63,8 @@ void updateMenu(){
 	setNextColor(player2, player1, nextColorP2, menuCursor);
 	changePlayerColor(player1);
 	changePlayerColor(player2);
+	exitGame(menuCursor, exitButton);
+	startGame(menuCursor, playButton,GameState);
 }
 void drawMenu() {
 	BeginDrawing();
@@ -115,9 +108,9 @@ bool buttonIsClicked(Cursor cursor, Rectangle rect) {
 void drawMenuButton(Rectangle rect) {
 	DrawRectangleRec(rect, RED);
 }
-void drawMenuText() {
-	DrawText("Usa las flechas para cambiar el color de las barras!", 140, 30, 20, RAYWHITE);
-	DrawText("Presiona 'Play' cuando estes listo para jugar.", 170, 50, 20, RAYWHITE);
+void drawMenuText(){
+	DrawText("Usa las flechas para cambiar el color de las barras!", GetScreenWidth()/2-GetScreenWidth()/5, 30, 20, RAYWHITE);
+	DrawText("Presiona 'Play' cuando estes listo para jugar.", GetScreenWidth()/2-GetScreenWidth()/6, 50, 20, RAYWHITE);
 	DrawText("Play", static_cast<int>(playButton.x) + 30, static_cast<int>(playButton.y) + 15, 20, RAYWHITE);
 	DrawText("Exit", static_cast<int>(exitButton.x) + 30, static_cast<int>(exitButton.y) + 15, 20, RAYWHITE);
 }
@@ -195,5 +188,15 @@ void changePlayerColor(Player &player) {
 	case 8:
 		player.Color = DARKBROWN;
 		break;
+	}
+}
+void exitGame(Cursor cursor,Rectangle button) {
+	if (buttonIsClicked(cursor,button)) {
+		CloseWindow();
+	}
+}
+void startGame(Cursor cursor, Rectangle button, GameStates &gamestate) {
+	if (buttonIsClicked(cursor, button)) {
+		gamestate = Gameplay;
 	}
 }

@@ -4,39 +4,30 @@
 #include "Gameplay.h"
 #include "Exit.h"
 
-enum GameStates {
-	Menu,
-	Gameplay,
-	Exit
-};
 GameStates GameState;
-void init();
+void initScreen();
 
 void runGame() {
-	init();
-	switch (GameState) {
-	case Menu:
-		runMenu();
-		break;
-	case Gameplay:
-		break;
-	case Exit:
-		break;
+	initScreen();
+	initMenu();
+	initGameplay();
+	while (!WindowShouldClose()) {
+		switch (GameState) {
+		case Menu:
+			runMenu();
+			break;
+		case Gameplay:
+			runGameplay();
+			break;
+		case Exit:
+			break;
+		}
 	}
 }
-void init() {
+void initScreen() {
 	const int screenWidth = 800;
-	const int screenHeight = 450;
-	InitWindow(screenWidth, screenHeight, "raylib [core] example - keyboard input");
+	const int screenHeight = 400;
+	InitWindow(screenWidth, screenHeight, "Pong");
 	SetTargetFPS(60);
 }
-void input() {
 
-}
-void update() {
-	
-}
-void draw() {
-	BeginDrawing();
-	EndDrawing();
-}

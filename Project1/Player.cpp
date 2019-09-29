@@ -14,11 +14,11 @@ void initPlayers(Player &player,Player &otherPlayer) {
 void drawPlayer(Player player){
 	DrawRectangleRec(player.Body, player.Color);
 }
-void player1Move(Player &player1) {
+void movePlayer1(Player &player1) {
 	if (IsKeyDown(KEY_W))player1.Body.y -= player1.Speed;
 	if (IsKeyDown(KEY_S))player1.Body.y += player1.Speed;
 }
-void player2Move(Player &player2) {
+void movePlayer2(Player &player2) {
 	if (IsKeyDown(KEY_UP))player2.Body.y -= player2.Speed;
 	if (IsKeyDown(KEY_DOWN))player2.Body.y += player2.Speed;
 }

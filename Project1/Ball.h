@@ -6,11 +6,12 @@
 struct Ball {
 	Vector2 Position;
 	Color Color = WHITE;
-	Vector2 Speed = { 7.5f,6.0f };
-	float Radius = 10;
+	Vector2 Speed;
+	float Radius;
 };
 static Ball playBall;
 
+void initBall(Ball &ball);
 void moveBall(Ball &ball);
 void drawBall(Ball ball);
 #endif BALL_H

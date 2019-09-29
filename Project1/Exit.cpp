@@ -8,8 +8,15 @@ struct Cursor {
 };
 
 Cursor menuCursor;
-void clickButton(Cursor cursor, Rectangle rect) {
-	if (CheckCollisionCircleRec(cursor.Position, cursor.Radius, rect)&&IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+void drawExit();
 
-	}
+void runExit(){
+	drawExit();
+}
+
+void drawExit() {
+
+}
+void drawWhoWins() {
+	DrawText("Player %i Wins!", (GetScreenWidth() / 2 - GetScreenWidth() / 15), GetScreenHeight() / 10, 10, RAYWHITE);
 }

@@ -16,6 +16,6 @@ static Player player2;
 
 void initPlayers(Player &player, Player &otherPlayer);
 void drawPlayer(Player player);
-void player1Move(Player &player1);
-void player2Move(Player &player2);
+void movePlayer1(Player &player1);
+void movePlayer2(Player &player2);
 #endif BALL_H

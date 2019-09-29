@@ -1,5 +1,12 @@
 #include "Gameplay.h"
-
+void runGameplay() {
+	inputGameplay();
+	updateGameplay();
+	drawGameplay();
+}
+void initGameplay() {
+	initBall(playBall);
+}
 bool checkGameState(Player player) {
 	if (player.Points >= 10)
 	{
@@ -14,27 +21,30 @@ void drawGameData(Player player1,Player player2) {
 	DrawText(TextFormat("P2: %i", player2.Points), GetScreenWidth() - GetScreenWidth() / 10, 10, 20, RAYWHITE);
 }
 void drawGameplay() {
+	BeginDrawing();
+	ClearBackground(BLACK);
 	drawBall(playBall);
 	drawPlayer(player1);
 	drawPlayer(player2);
 	drawGameData(player1, player2);
+	EndDrawing();
 }
-void ballBouncesWall(Player &player1, Player &player2, Ball ball) {
+void ballBouncesWall(Player &player1, Player &player2, Ball &ball) {
 	if ((ball.Position.x >= (GetScreenWidth() - ball.Radius))) {
 		ball.Position.x = GetScreenWidth() / 2;
 		ball.Position.y = GetScreenHeight() / 2;
 		player1.Points++;
-		ball.Speed.x = 7.5f;
-		ball.Speed.y = 6.0f;
+		ball.Speed.x = GetScreenWidth() / 100;
+		ball.Speed.y = GetScreenHeight() / 100;
 	}
 	if (ball.Position.x <= ball.Radius) {
 		ball.Position.x = GetScreenWidth() / 2;
 		ball.Position.y = GetScreenHeight() / 2;
 		player2.Points++;
-		ball.Speed.x = -7.5f;
-		ball.Speed.y = -6.0f;
+		ball.Speed.x = -GetScreenWidth()/100;
+		ball.Speed.y = -GetScreenHeight()/100;
 	}
-	if ((ball.Position.y >= (GetScreenHeight() - ball.Radius)) || (ball.Position.y <= ball.Radius))ball.Speed.y *= -1.0f;
+	if ((ball.Position.y >= (GetScreenHeight() - ball.Radius)) || (ball.Position.y <= ball.Radius)) { ball.Speed.y *= -1.0f; }
 }
 bool ballHittingPlayer(Ball ball, Player player) {
 	if (CheckCollisionCircleRec(ball.Position, ball.Radius, player.Body)) {
@@ -72,7 +82,7 @@ void ballBouncesPlayer(Player player, Ball &ball) {
 		hasCollided = false;
 	}
 }
-void playerCollidesW(Player player) {
+void playerCollidesW(Player &player) {
 	if ((player.Body.y + player.Body.height) >= GetScreenHeight()) player.Body.y = GetScreenHeight() - player.Body.height;
 	else if (player.Body.y <= 0) player.Body.y = 0;
 }
@@ -84,4 +94,9 @@ void updateGameplay(){
 	ballBouncesPlayer(player2, playBall);
 	playerCollidesW(player1);
 	playerCollidesW(player2);
+	moveBall(playBall);
+}
+void inputGameplay(){
+	movePlayer1(player1);
+	movePlayer2(player2);
 }

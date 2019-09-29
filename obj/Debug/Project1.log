@@ -1,4 +1,16 @@
-﻿  Menu.cpp
-c:\users\juan cruz\desktop\pong_raylib\project1\menu.cpp(82): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\juan cruz\desktop\pong_raylib\project1\menu.cpp(96): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+﻿  Game.cpp
+  Gameplay.cpp
+c:\users\juan cruz\desktop\pong_raylib\project1\gameplay.cpp(34): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\gameplay.cpp(35): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\gameplay.cpp(37): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\gameplay.cpp(38): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\gameplay.cpp(41): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\gameplay.cpp(42): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\gameplay.cpp(44): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\gameplay.cpp(45): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\juan cruz\desktop\pong_raylib\project1\gameplay.cpp(63): warning C4552: "-": el resultado de la expresión no se usa
+c:\users\juan cruz\desktop\pong_raylib\project1\gameplay.cpp(67): warning C4552: "-": el resultado de la expresión no se usa
+c:\users\juan cruz\desktop\pong_raylib\project1\gameplay.cpp(71): warning C4552: "+": el resultado de la expresión no se usa
+c:\users\juan cruz\desktop\pong_raylib\project1\gameplay.cpp(75): warning C4552: "+": el resultado de la expresión no se usa
+  Generando código...
   Project1.vcxproj -> C:\Users\Juan Cruz\Desktop\Pong_raylib\bin\Debug\Project1.exe
