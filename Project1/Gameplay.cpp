@@ -1,5 +1,17 @@
 #include "Game.h"
 #include "Gameplay.h"
+#include <ctime> 
+#include <cstdlib> 
+
+struct PowerUP {
+	Vector2 Position;
+	Vector2 Size;
+	Color Color;
+};
+
+PowerUP PlayerEnlarger;
+PowerUP BallSway;
+int timer;
 void exitGame(Player player, GameStates &gamestate);
 
 void runGameplay() {
@@ -109,4 +121,18 @@ void exitGame(Player player, GameStates &gamestate) {
 	if (player.Win == true) {
 		gamestate = Exit;
 	}
+}
+void initPowerUP(PowerUP powerup,Color color) {
+	powerup.Size.x = 10;
+	powerup.Size.y = 10;
+}
+void randomizePowerUP(PowerUP &powerup) {
+	srand((unsigned)time(NULL));
+	powerup.Position.x = GetScreenWidth() / 2;
+	powerup.Position.y= (rand() % GetScreenHeight()-10) + 10;
+}
+void spawnPowerUP(PowerUP powerup) {
+	BeginDrawing();
+	DrawRectangleV(powerup.Position,powerup.Size, MAROON);
+	EndDrawing();
 }
