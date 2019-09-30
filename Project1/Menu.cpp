@@ -1,14 +1,9 @@
 #include "Game.h"
 #include "Menu.h"
+#include "Gameplay.h"
 #include "Player.h"
 #include "raylib.h"
 
-struct Cursor {
-	Vector2 Position;
-	Color Color = WHITE;
-	Vector2 Speed = { 7.5f,6.0f };
-	int Radius = 10;
-};
 struct Triangle
 {
 	Vector2 TriBase;
@@ -17,7 +12,8 @@ struct Triangle
 	Vector2 Position;
 };
 
-extern Cursor menuCursor;
+Cursor menuCursor;
+
 
 Rectangle playButton;
 Rectangle exitButton;
@@ -27,20 +23,16 @@ Triangle nextColorP1;
 Triangle prevColorP2;
 Triangle nextColorP2;
 
-bool buttonIsClicked(Cursor cursor, Rectangle rect);
 bool triangleIsClicked(Triangle prevColor, Cursor menuCursor);
 void initMenuButtons(Rectangle &playButton, Rectangle &exitButton);
 void drawBackground();
-void drawMenuButton(Rectangle rect);
 void drawMenuText();
 void initTriangles(Triangle &prevColor, Triangle &nextColor, Player player);
 void drawTriangles(Triangle prevColor, Triangle nextColor, Player player);
 void setPrevColor(Player &player, Player otherPlayer, Triangle prevColor, Cursor menuCursor);
 void setNextColor(Player &player, Player otherPlayer, Triangle nextColor, Cursor menuCursor);
 void changePlayerColor(Player &player);
-void followMenuCursor(Cursor &cursor);
-void exitGame(Cursor cursor, Rectangle button);
-void startGame(Cursor cursor, Rectangle button, GameStates &gamestate);
+
 void initScreen();
 void updateMenu();
 void drawMenu();
@@ -111,8 +103,8 @@ void drawMenuButton(Rectangle rect) {
 void drawMenuText(){
 	DrawText("Usa las flechas para cambiar el color de las barras!", GetScreenWidth()/2-GetScreenWidth()/5, 30, 20, RAYWHITE);
 	DrawText("Presiona 'Play' cuando estes listo para jugar.", GetScreenWidth()/2-GetScreenWidth()/6, 50, 20, RAYWHITE);
-	DrawText("Play", static_cast<int>(playButton.x) + 30, static_cast<int>(playButton.y) + 15, 20, RAYWHITE);
-	DrawText("Exit", static_cast<int>(exitButton.x) + 30, static_cast<int>(exitButton.y) + 15, 20, RAYWHITE);
+	DrawText("Play",static_cast<int>(playButton.x)+static_cast<int>(playButton.width)/3, static_cast<int>(playButton.y) + static_cast<int>(exitButton.height)/3, 20, RAYWHITE);
+	DrawText("Exit",static_cast<int>(exitButton.x)+static_cast<int>(playButton.width)/3, static_cast<int>(exitButton.y) + static_cast<int>(exitButton.height)/3, 20, RAYWHITE);
 }
 void initTriangles(Triangle &prevColor, Triangle &nextColor, Player player) {
 	prevColor.TriBase.x = (player.Body.x + (player.Body.width / 2)) - 10;
@@ -197,6 +189,7 @@ void exitGame(Cursor cursor,Rectangle button) {
 }
 void startGame(Cursor cursor, Rectangle button, GameStates &gamestate) {
 	if (buttonIsClicked(cursor, button)) {
+		resetPlayerPoints(player1, player2);
 		gamestate = Gameplay;
 	}
 }

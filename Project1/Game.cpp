@@ -20,6 +20,7 @@ void runGame() {
 			runGameplay();
 			break;
 		case Exit:
+			runExit();
 			break;
 		}
 	}

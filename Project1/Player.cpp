@@ -24,3 +24,7 @@ void movePlayer2(Player &player2) {
 	if (IsKeyDown(KEY_UP))player2.Body.y -= player2.Speed;
 	if (IsKeyDown(KEY_DOWN))player2.Body.y += player2.Speed;
 }
+void resetPlayerPoints(Player &player,Player &otherPlayer) {
+	player.Points = 0;
+	otherPlayer.Points = 0;
+}

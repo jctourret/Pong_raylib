@@ -1,4 +1,7 @@
+#include "Game.h"
 #include "Gameplay.h"
+void exitGame(Player player, GameStates &gamestate);
+
 void runGameplay() {
 	inputGameplay();
 	updateGameplay();
@@ -7,16 +10,16 @@ void runGameplay() {
 void initGameplay() {
 	initBall(playBall);
 }
-bool checkGameState(Player player) {
+void checkGameState(Player &player) {
 	if (player.Points >= 10)
 	{
-		return true;
+		player.Win = true;
 	}
-	else{
-		return false;
+	else {
+		player.Win = false;
 	}
 }
-void drawGameData(Player player1,Player player2) {
+void drawGameData(Player player1, Player player2) {
 	DrawText(TextFormat("P1: %i", player1.Points), GetScreenWidth() / 20, 10, 20, RAYWHITE);
 	DrawText(TextFormat("P2: %i", player2.Points), GetScreenWidth() - GetScreenWidth() / 10, 10, 20, RAYWHITE);
 }
@@ -41,8 +44,8 @@ void ballBouncesWall(Player &player1, Player &player2, Ball &ball) {
 		ball.Position.x = GetScreenWidth() / 2;
 		ball.Position.y = GetScreenHeight() / 2;
 		player2.Points++;
-		ball.Speed.x = -GetScreenWidth()/100;
-		ball.Speed.y = -GetScreenHeight()/100;
+		ball.Speed.x = -GetScreenWidth() / 100;
+		ball.Speed.y = -GetScreenHeight() / 100;
 	}
 	if ((ball.Position.y >= (GetScreenHeight() - ball.Radius)) || (ball.Position.y <= ball.Radius)) { ball.Speed.y *= -1.0f; }
 }
@@ -50,7 +53,7 @@ bool ballHittingPlayer(Ball ball, Player player) {
 	if (CheckCollisionCircleRec(ball.Position, ball.Radius, player.Body)) {
 		return true;
 	}
-	else{
+	else {
 		return false;
 	}
 }
@@ -86,7 +89,7 @@ void playerCollidesW(Player &player) {
 	if ((player.Body.y + player.Body.height) >= GetScreenHeight()) player.Body.y = GetScreenHeight() - player.Body.height;
 	else if (player.Body.y <= 0) player.Body.y = 0;
 }
-void updateGameplay(){
+void updateGameplay() {
 	checkGameState(player1);
 	checkGameState(player2);
 	ballBouncesWall(player1, player2, playBall);
@@ -95,8 +98,15 @@ void updateGameplay(){
 	playerCollidesW(player1);
 	playerCollidesW(player2);
 	moveBall(playBall);
+	exitGame(player1, GameState);
+	exitGame(player2, GameState);
 }
-void inputGameplay(){
+void inputGameplay() {
 	movePlayer1(player1);
 	movePlayer2(player2);
+}
+void exitGame(Player player, GameStates &gamestate) {
+	if (player.Win == true) {
+		gamestate = Exit;
+	}
 }
