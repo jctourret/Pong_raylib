@@ -23,16 +23,16 @@ Triangle nextColorP1;
 Triangle prevColorP2;
 Triangle nextColorP2;
 
-bool triangleIsClicked(Triangle prevColor, Cursor menuCursor);
+
 void initMenuButtons(Rectangle &playButton, Rectangle &exitButton);
 void drawBackground();
 void drawMenuText();
 void initTriangles(Triangle &prevColor, Triangle &nextColor, Player player);
 void drawTriangles(Triangle prevColor, Triangle nextColor, Player player);
+bool triangleIsClicked(Triangle prevColor, Cursor menuCursor);
 void setPrevColor(Player &player, Player otherPlayer, Triangle prevColor, Cursor menuCursor);
 void setNextColor(Player &player, Player otherPlayer, Triangle nextColor, Cursor menuCursor);
 void changePlayerColor(Player &player);
-
 void initScreen();
 void updateMenu();
 void drawMenu();
@@ -46,6 +46,32 @@ void initMenu(){
 	initPlayers(player1, player2);
 	initTriangles(prevColorP1, nextColorP1, player1);
 	initTriangles(prevColorP2, nextColorP2, player2);
+}
+void drawMenuButton(Rectangle rect) {
+	DrawRectangleRec(rect, RED);
+}
+void startGame(Cursor cursor, Rectangle button, GameStates &gamestate) {
+	if (buttonIsClicked(cursor, button)) {
+		resetPlayerPoints(player1, player2);
+		gamestate = Gameplay;
+	}
+}
+bool buttonIsClicked(Cursor cursor, Rectangle rect) {
+	if (CheckCollisionCircleRec(cursor.Position, static_cast<float>(cursor.Radius), rect)
+		&& IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+void exitGame(Cursor cursor, Rectangle button) {
+	if (buttonIsClicked(cursor, button)) {
+		CloseWindow();
+	}
+}
+void followMenuCursor(Cursor &cursor) {
+	cursor.Position = GetMousePosition();
 }
 void updateMenu(){
 	followMenuCursor(menuCursor);
@@ -71,9 +97,6 @@ void drawMenu() {
 	drawTriangles(prevColorP2, nextColorP2, player2);
 	EndDrawing();
 }
-void followMenuCursor(Cursor &cursor) {
-	cursor.Position = GetMousePosition();
-}
 void initMenuButtons(Rectangle &playButton, Rectangle &exitButton) {
 	playButton.height = 50;
 	playButton.width = 100;
@@ -88,18 +111,7 @@ void initMenuButtons(Rectangle &playButton, Rectangle &exitButton) {
 void drawBackground() {
 	ClearBackground(BLACK);
 }
-bool buttonIsClicked(Cursor cursor, Rectangle rect) {
-	if (CheckCollisionCircleRec(cursor.Position, static_cast<float>(cursor.Radius), rect)
-		&& IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-		return true;
-	}
-	else {
-		return false;
-	}
-}
-void drawMenuButton(Rectangle rect) {
-	DrawRectangleRec(rect, RED);
-}
+
 void drawMenuText(){
 	DrawText("Usa las flechas para cambiar el color de las barras!", GetScreenWidth()/2-GetScreenWidth()/5, 30, 20, RAYWHITE);
 	DrawText("Presiona 'Play' cuando estes listo para jugar.", GetScreenWidth()/2-GetScreenWidth()/6, 50, 20, RAYWHITE);
@@ -180,16 +192,5 @@ void changePlayerColor(Player &player) {
 	case 8:
 		player.Color = DARKBROWN;
 		break;
-	}
-}
-void exitGame(Cursor cursor,Rectangle button) {
-	if (buttonIsClicked(cursor,button)) {
-		CloseWindow();
-	}
-}
-void startGame(Cursor cursor, Rectangle button, GameStates &gamestate) {
-	if (buttonIsClicked(cursor, button)) {
-		resetPlayerPoints(player1, player2);
-		gamestate = Gameplay;
 	}
 }

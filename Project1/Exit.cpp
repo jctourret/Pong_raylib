@@ -4,12 +4,13 @@
 #include "Player.h"
 #include "raylib.h"
 
+void updateExit();
+void drawExit();
+void drawWhoWins(Player player);
 void drawMenuText();
 void drawMenuButton(Rectangle rect);
-void drawExit();
 void drawExitText();
-void drawWhoWins(Player player);
-void updateExit();
+
 
 void runExit(){
 	updateExit();
